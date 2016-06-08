@@ -1,4 +1,5 @@
-try from tkinter import *
+try:
+    from tkinter import *
 except:
     from Tkinter import *
 from math import *
