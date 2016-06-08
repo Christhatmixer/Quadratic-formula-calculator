@@ -3,7 +3,7 @@ from math import *
 
 
 def quadratic(a,b,c):
-    answer = (-int(b))-(sqrt((int(b)**2)-(4*int(a)*int(c))/(2*int(a))))
+    answer = (-float(b))-(sqrt((float(b)**2)-(4*float(a)*float(c))/(2*float(a))))
     return answer
 
 
