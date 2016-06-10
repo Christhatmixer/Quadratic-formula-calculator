@@ -1,13 +1,19 @@
 try:
     from tkinter import *
-except:
+except ImportError:
     from Tkinter import *
 from math import *
 
 
 def quadratic(a,b,c):
-    answer = (-float(b))-(sqrt((float(b)**2)-(4*float(a)*float(c))/(2*float(a))))
-    return answer
+    a = float(a)
+    b = float(b)
+    c = float(c)
+    discRoot = math.sqrt((b * b) - 4 * a * c)
+    answer = (-b + discRoot) / (2 * a) # solving positive
+    answer2 = (-b - discRoot) / (2 * a) # solving negative
+    return (answer,answer2)
+
 
 
 
@@ -19,6 +25,7 @@ root.resizable(width=False,height=False)
 
 #Variables
 answer=StringVar(root)
+answer2=StringVar(root)
 A_variable = StringVar(root)
 B_variable = StringVar(root)
 C_variable = StringVar(root)
@@ -50,20 +57,25 @@ C.grid(row=3,column=2)
 #answer box
 Answer_box = Label(root, textvariable=answer)
 Answer_box.grid(row=4,column=2)
+answer_box2 = Label(root, textvariable=answer2)
+answer_box2.grid(row=5,column=2)
 
 
 #----------Calculate Button-----------
 def show_answer():
     answer.set(0)
+    answer2.set(0)
     try:
         final_answer = quadratic(A_variable.get(),B_variable.get(),C_variable.get())
-        answer.set(final_answer)
+        answer.set(final_answer[0])
+        answer2.set(final_answer)
     except:
         answer.set("Negative Squareroot")
+        answer2.set("negative Squareroot")
     return final_answer
 
 Calculate = Button(root,text="Calculate",command=show_answer)
-Calculate.grid(row=5,column=2)
+Calculate.grid(row=6,column=2)
 
 root.update()
 
