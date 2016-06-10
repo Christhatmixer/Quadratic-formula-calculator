@@ -1,3 +1,5 @@
+import math
+
 try:
     from tkinter import *
 except ImportError:
@@ -68,11 +70,13 @@ def show_answer():
     try:
         final_answer = quadratic(A_variable.get(),B_variable.get(),C_variable.get())
         answer.set(final_answer[0])
-        answer2.set(final_answer)
+        answer2.set(final_answer[1])
+        return final_answer
     except:
         answer.set("Negative Squareroot")
         answer2.set("negative Squareroot")
-    return final_answer
+        return final_answer
+
 
 Calculate = Button(root,text="Calculate",command=show_answer)
 Calculate.grid(row=6,column=2)
